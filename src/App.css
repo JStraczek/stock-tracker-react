@@ -6,6 +6,10 @@ body {
   background-color: #f5f6fa;
 }
 
+.app__left > h1 {
+  color: #6495ed;
+}
+
 .app {
   display: flex;
   justify-content: space-evenly;
@@ -23,8 +27,7 @@ body {
 
 .app__right {
   display: flex;
-  flex: 0.3;
-  flex-shrink: 1;
+  flex: 0.4;
   justify-content: flex-start;
   flex-direction: column;
 }
@@ -48,13 +51,14 @@ body {
 
 .app__descriptionbox {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .app__chartbox .MuiCardContent-root {
   width: 100%;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1200px) {
   .app {
     flex-direction: column;
   }
