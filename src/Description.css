@@ -1,0 +1,10 @@
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid lightgray;
+}
+
+.description {
+  margin-left: 10px;
+}

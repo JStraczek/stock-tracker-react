@@ -1,0 +1,30 @@
+.search-box {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  color: #6a5d6d;
+  background-color: white;
+  width: 400px;
+}
+
+.results {
+  display: block;
+  max-height: 400px;
+  /* overflow-y: visible;
+  overflow-x: hidden; */
+  overflow: auto;
+}
+
+.results tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results td {
+  padding: 0.5rem;
+}
+
+.results tr:hover {
+  background-color: #f3f2f8;
+  cursor: pointer;
+}
