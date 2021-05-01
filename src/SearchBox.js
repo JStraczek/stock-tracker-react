@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBox.css";
 import { TextField } from "@material-ui/core";
+import { av } from "./tokens.js";
 
-const apikey = "MCCRAWKHKGQ629ZQ";
+const apikey = av.api_token;
 
 function SearchBox({ handleAddTrackedStock }) {
   const [keyword, setKeyword] = useState("");
@@ -53,7 +54,9 @@ function SearchBox({ handleAddTrackedStock }) {
               <td>
                 <strong>{result["1. symbol"]}</strong>
               </td>
-              <td>{result["2. name"]}</td>
+              <td>
+                <small>{result["2. name"]}</small>
+              </td>
             </tr>
           ))}
       </div>

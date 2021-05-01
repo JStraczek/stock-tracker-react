@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
+import { iex } from "./tokens.js";
 
 const baseurl = "https://cloud.iexapis.com/stable";
-const apitoken = "pk_c08ad6d2c5a145478089d56830afe569";
+const apitoken = iex.api_token;
 
 function Table({ trackedStocks, handleFocusStock }) {
   const [stocks, setStocks] = useState([]);

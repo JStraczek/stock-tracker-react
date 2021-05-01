@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Description.css";
+import { iex } from "./tokens.js";
 
 const baseurl = "https://cloud.iexapis.com/stable";
-const apitoken = "pk_c08ad6d2c5a145478089d56830afe569";
+const apitoken = iex.api_token;
 
 function Description({ focusedStock }) {
   const [data, setData] = useState("");
@@ -43,13 +44,7 @@ function Description({ focusedStock }) {
           <small>{data.description}</small>
         ) : (
           <small>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
+            Description not available or you have not chosen a stock
           </small>
         )}
       </div>

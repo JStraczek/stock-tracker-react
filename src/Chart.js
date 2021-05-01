@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 import "./Chart.css";
+import { iex } from "./tokens.js";
 
 const baseurl = "https://cloud.iexapis.com/stable";
-const apitoken = "pk_c08ad6d2c5a145478089d56830afe569";
+const apitoken = iex.api_token;
 
 const options = {
   legend: {
@@ -54,55 +55,26 @@ const options = {
 function Chart({ focusedStock, className }) {
   const [data, setData] = useState({});
 
-  //   const buildChartData = (data) => {
-  //     let chartData = [];
-  //     data.map((entry) => {
-  //       const newDataPoint = {
-  //         x: entry.date,
-  //         y: entry.open,
-  //       };
-  //       chartData.push(newDataPoint);
-  //     });
-  //     console.log(chartData);
-  //     return chartData;
-  //   };
-
-  const buildChartData = (data, casesType) => {
+  const buildChartData = (data) => {
     let chartData = [];
-    let lastDataPoint;
-    for (let date in data.cases) {
-      if (lastDataPoint) {
-        const newDataPoint = {
-          x: date,
-          y: data[casesType][date] - lastDataPoint,
-        };
-        chartData.push(newDataPoint);
-      }
-      lastDataPoint = data[casesType][date];
-    }
+    data.map((entry) => {
+      const newDataPoint = {
+        x: entry.date,
+        y: entry.open,
+      };
+      chartData.push(newDataPoint);
+    });
     console.log(chartData);
     return chartData;
   };
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       await fetch(`${baseurl}/stock/${focusedStock}/chart/1m?token=${apitoken}`)
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           const chartData = buildChartData(data);
-  //           setData(chartData);
-  //         });
-  //     };
-  //     fetchData();
-  //   }, [focusedStock]);
-
   useEffect(() => {
     const fetchData = async () => {
-      await fetch(`https://disease.sh/v3/covid-19/historical/all?lastdays=120`)
+      await fetch(`${baseurl}/stock/${focusedStock}/chart/1m?token=${apitoken}`)
         .then((response) => response.json())
         .then((data) => {
-          const chartData = buildChartData(data, "deaths");
+          console.log(data);
+          const chartData = buildChartData(data);
           setData(chartData);
         });
     };
